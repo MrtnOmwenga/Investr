@@ -2,3 +2,4 @@ flask
 uuid
 sqlalchemy
 bcrypt
+numpy
