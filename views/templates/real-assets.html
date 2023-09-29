@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- End of headStart -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="Framer f415c5a">
+    <title>Investr</title>
+    <meta name="description" content="Made with Framer">
+    <meta name="framer-search-index" content="https://framerusercontent.com/sites/6EWInh3ueBwu3esBDUNkkQ/searchIndex-DYb8VcQf1vxr.json">
+    <link rel="icon" href="https://framerusercontent.com/sites/icons/default-favicon.v3.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Manage Your Investments">
+    <meta property="og:description" content="Made with Framer">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manage Your Investments">
+    <meta name="twitter:description" content="Made with Framer">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
+    <!---Stylesheet-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('views.static', filename='base.css') }}" />
+
+  </head>
+  <body>
+    <div class="main">
+      <nav class="nav">
+        <a href="#" class="Title" >Investr</a>
+      </nav>
+      <div class="sidebar sticky">
+        <!--Title-->
+        <!-- Dashboard button -->
+        <a href="/dashboard" class="dashboard-button">Dashboard</a>
+
+        <!-- Category buttons -->
+        <a href="/equity-assets" class="sidebar-button">Equity-Based Assets</a>
+        <a href="/fixed-assets" class="sidebar-button">Fixed-Income Assets</a>
+        <a href="/real-assets" class="sidebar-button active">Real Assets</a>
+        <a href="/derivative-investments" class="sidebar-button">Derivative investments</a>
+        <a href="/alternative-investments" class="sidebar-button">Alternative Investments</a>
+        <a href="/digital-assets" class="sidebar-button">Digital Assets</a>
+        <a href="/liquid-assets" class="sidebar-button">Liquid Assets</a>
+        <a href="/retirement-accounts" class="sidebar-button">Retirement Accounts</a>
+        
+        <!-- Add more category buttons as needed -->
+
+        <!-- Account settings button -->
+        <a href="#" class="account-settings-button">Account Settings</a>
+      </div>
+
+      <!-- Main content -->
+      <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
+          <!-- Your main content goes here -->
+          <h1 class="main-title">REAL ASSETS</h1>
+          <a type="button" class="new-btn extra" href="/forms/real-estate-forms">New</a>
+          <div class="total-value">
+            <h3 class="title">TOTAL PORTFOLIO VALUE</h3>
+            <h4 class="value">$ {{data['Real-Assets']['total_value']}}</h4>
+          </div>
+          <div class="assets">
+            <table>
+              <tr>
+                <th>NAME</th>
+                <th>TYPE</th>
+                <th>LOCATION</th>
+                <th>VALUE</th>
+                <th></th>
+              </tr>
+            </table>
+          </div>
+      </div>
+    </div>
+
+    <script>
+      const table = document.querySelector(".assets table");
+      const estatesData = [];
+    
+      // Iterate through the list of class objects and convert them to JSON serializable dictionaries
+      '{% for estate in data["Real-Assets"]["real_estate"] %}'
+          // Call the to_string() method to get a JSON serializable representation
+          const serializedStock = JSON.parse('{{ estate.to_dict() | tojson | safe }}');
+          
+          // Add the serialized representation to the 'stocksData' array
+          estatesData.push(serializedStock);
+      '{% endfor %}'
+
+      const populateUl = () => {
+        estatesData.forEach((estate) => {
+          let tr = document.createElement("tr");
+          tr.innerHTML = `<td class='property_name'>${estate.property_name}</td> <td class='property_type'> ${estate.property_type}</td> <td class='location'> ${estate.location}</td> <td class='value'> ${estate.value}</td> <td> <button class="stock_btn"> DELETE </button> </td>`;
+          table.appendChild(tr);
+        });
+      };
+
+      console.log(estatesData);
+      populateUl();
+    </script>
+  </body>
+</html>

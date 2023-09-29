@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- End of headStart -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="Framer f415c5a">
+    <title>Investr</title>
+    <meta name="description" content="Made with Framer">
+    <meta name="framer-search-index" content="https://framerusercontent.com/sites/6EWInh3ueBwu3esBDUNkkQ/searchIndex-DYb8VcQf1vxr.json">
+    <link rel="icon" href="https://framerusercontent.com/sites/icons/default-favicon.v3.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Manage Your Investments">
+    <meta property="og:description" content="Made with Framer">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manage Your Investments">
+    <meta name="twitter:description" content="Made with Framer">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
+    <!---Stylesheet-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('views.static', filename='dashboard.css') }}" />
+
+  </head>
+  <body>
+    <div class="main">
+      <nav class="nav">
+        <a href="#" class="Title" >Investr</a>
+      </nav>
+      <div class="sidebar sticky">
+        <!--Title-->
+        <!-- Dashboard button -->
+        <a href="#" class="dashboard-button active">Dashboard</a>
+
+        <!-- Category buttons -->
+        <a href="/equity-assets" class="sidebar-button">Equity-Based Assets</a>
+        <a href="/fixed-assets" class="sidebar-button">Fixed-Income Assets</a>
+        <a href="/real-assets" class="sidebar-button">Real Assets</a>
+        <a href="/derivative-investments" class="sidebar-button">Derivative investments</a>
+        <a href="/alternative-investments" class="sidebar-button">Alternative Investments</a>
+        <a href="/digital-assets" class="sidebar-button">Digital Assets</a>
+        <a href="/liquid-assets" class="sidebar-button">Liquid Assets</a>
+        <a href="/retirement-accounts" class="sidebar-button">Retirement Accounts</a>
+        
+        <!-- Add more category buttons as needed -->
+
+        <!-- Account settings button -->
+        <a href="#" class="account-settings-button">Account Settings</a>
+      </div>
+
+      <!-- Main content -->
+      <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
+          <!-- Your main content goes here -->
+          <h1 class="main-title">DASHBOARD</h1>
+          <div class="total-value">
+            <h3 class="title">TOTAL PORTFOLIO VALUE</h3>
+            <h4 class="value">$ {{data['total_value']}}</h4>
+          </div>
+          <div class="asset-allocation">
+            <div class="column_a">
+              <p>ASSET ALLOCATION</p>
+              <canvas class="chart"></canvas>
+            </div>
+            <div class="column_b">
+              <table>
+                <th></th>
+                <th></th>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const myChart = document.querySelector(".chart")
+      const table = document.querySelector(".asset-allocation .column_b table");
+
+      const chartData = {
+        labels: ["Equity-Based-Assets", "Fixed-Income-Assets", "Real-Assets", "Alternative-Investments", "Derivative-Investments", "Liquid-Assets", "Digital-Assets"],
+        data: ['{{ data["Equity-Based-Assets"]["total_value"] }}',
+        '{{ data["Fixed-Income-Assets"]["total_value"] }}',
+        '{{ data["Real-Assets"]["total_value"] }}',
+        '{{ data["Alternative-Investments"]["total_value"] }}',
+        '{{ data["Derivative-Investments"]["total_value"] }}',
+        '{{ data["Liquid-Assets"]["total_value"] }}',
+        '{{ data["Digital-Assets"]["total_value"] }}',
+        ]
+      };
+
+      new Chart(myChart, {
+        type: "doughnut",
+        data: {
+          labels: chartData.labels,
+          datasets: [
+            {
+              label: "Asset Allocation",
+              data: chartData.data,
+            },
+          ],
+        },
+        options: {
+          borderWidth: 10,
+          borderRadius: 2,
+          hoverBorderWidth: 0,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      console.log(chartData)
+
+      const populateUl = () => {
+        chartData.labels.forEach((l, i) => {
+          let tr = document.createElement("tr");
+          tr.innerHTML = `<td class='legend'>${chartData.labels[i]}:</td> <td class='legend-value'>USD ${chartData.data[i]}</td>`;
+          table.appendChild(tr);
+        });
+      };
+
+      populateUl();
+    </script>
+  </body>
+</html>
