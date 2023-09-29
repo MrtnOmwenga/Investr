@@ -3,3 +3,4 @@ uuid
 sqlalchemy
 bcrypt
 numpy
+gunicorn
