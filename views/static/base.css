@@ -52,14 +52,14 @@ body {
   overflow-y: auto; /* Enable scrolling if content overflows */
   padding-top: 50px;
   border-right: 5px;
-  border-color: #000000;
+  border-color: #333333;
 }
 
 /* Style for sidebar buttons */
 .sidebar-button {
   display: block;
   padding: 10px 30px;
-  color: #000000;
+  color: #333333;
   font-family: 'DM Sans', sans-serif;
   text-decoration: none;
   transition: background-color 0.3s;
@@ -97,7 +97,7 @@ body {
 
 .account-settings-button {
   margin-top: 20px;
-  color: #000000;
+  color: #333333;
 }
 
 .main-container {
@@ -106,6 +106,7 @@ body {
   margin-left: 220px;
   padding: 20px;
   flex: 1;
+  transition: transform 5s;
 }
 
 .main-title {
@@ -126,9 +127,14 @@ body {
   padding: 1px 35px 1px 35px;
 }
 
+.total-value:hover {
+  transform: scale(1.075);
+}
+
 .total-value .title {
   font-weight: 100;
   font-size: medium;
+  color: #FF6B35;
 }
 
 .total-value .value {
@@ -151,20 +157,26 @@ body {
 
 .assets table tr td {
   text-align: left;
-  height: 30px;
+  height: 50px;
 }
 
 .stock_btn {
-  border-color: rgb(244, 16, 16);
+  border-color: #FF0000;
   border-style: solid;
   border-radius: 5px;
-  height: 25px;
-  color: red;
+  border-width: 1px;
+  height: 30px;
+  width: 80px;
+  color: #FF0000;
+  margin-bottom: 5px;
+  background-color: #e9e9bd;
 }
 
 .stock_btn:hover {
-  background-color: red;
-  color: #000000;
+  background-color: #FF0000;
+  color: #EFEFD0;
+  transform: scale(1.075);
+  transition: transform 0.3s;
 }
 
 .new-btn {
@@ -172,7 +184,7 @@ body {
   width: 75px;
   height: 35px;
   right: 40px;
-  margin-top: 95px;
+  margin-top: 87px;
   border-radius: 5px;
   border-style: solid;
   border-width: 1px;
@@ -182,11 +194,17 @@ body {
   align-items: center;
   vertical-align: middle;
   text-decoration: none;
-  color: #000000;
-  background-color: #EFEFD0;
+  color: #EFEFD0;
+  background-color: #004E89;
+}
+
+.new-btn:hover {
+    background-color: #EFEFD0;
+    color:#004E89;
+    transform: scale(1.075);
 }
 
 .extra {
-  padding-top: 6px;
+  padding-top: 10px;
   height: 30px;
 }

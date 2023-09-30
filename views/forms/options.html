@@ -53,10 +53,15 @@
       <!-- Main content -->
       <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
         <h1>OPTIONS AND DERIVATIVES</h1>
-        <form method="POST" action="/options_derivatives">
+        <form method="POST" action='{{ url_for("forms.options")}}'>
           <!-- CSRF Token (if you're using Flask-WTF or a similar library for CSRF protection) -->
       
           <!-- Options and Derivatives Information -->
+          <div class="form-group">
+            <label for="contract_name">Contract Name:</label>
+            <input type="text" class="form-control" id="contract_name" name="contract_name" placeholder="Contract Name" required>
+        </div>
+
           <div class="form-group">
               <label for="underlying_asset">Underlying Asset:</label>
               <input type="text" class="form-control" id="underlying_asset" name="underlying_asset" placeholder="Underlying Asset" required>

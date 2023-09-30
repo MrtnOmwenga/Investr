@@ -300,22 +300,79 @@ CryptoList = [
     "id": str(uuid.uuid4()),
     "name": 'Bitcoin',
     "symbol": 'BTC',
+    "quantity": 200,
     "price": 45000.0,
     "date_purchased": datetime.strptime('2023-01-15', date_format),
     "portfolio_id": PortfolioList[0]["id"]
   },
   {
     "id": str(uuid.uuid4()),
+    "name": 'Bitcoin',
+    "symbol": 'BTC',
+    "quantity": 200,
+    "price": 45000.0,
+    "date_purchased": datetime.strptime('2023-01-15', date_format),
+    "portfolio_id": PortfolioList[1]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "name": 'Bitcoin',
+    "symbol": 'BTC',
+    "quantity": 200,
+    "price": 45000.0,
+    "date_purchased": datetime.strptime('2023-01-15', date_format),
+    "portfolio_id": PortfolioList[2]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
     "name": 'Ethereum',
     "symbol": 'ETH',
+    "quantity": 200,
+    "price": 3000.0,
+    "date_purchased": datetime.strptime('2023-02-20', date_format),
+    "portfolio_id": PortfolioList[0]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "name": 'Ethereum',
+    "symbol": 'ETH',
+    "quantity": 200,
     "price": 3000.0,
     "date_purchased": datetime.strptime('2023-02-20', date_format),
     "portfolio_id": PortfolioList[1]["id"]
   },
   {
     "id": str(uuid.uuid4()),
+    "name": 'Ethereum',
+    "symbol": 'ETH',
+    "quantity": 200,
+    "price": 3000.0,
+    "date_purchased": datetime.strptime('2023-02-20', date_format),
+    "portfolio_id": PortfolioList[2]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
     "name": 'Litecoin',
     "symbol": 'LTC',
+    "quantity": 200,
+    "price": 150.0,
+    "date_purchased": datetime.strptime('2023-03-10', date_format),
+    "portfolio_id": PortfolioList[0]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "name": 'Litecoin',
+    "symbol": 'LTC',
+    "quantity": 200,
+    "price": 150.0,
+    "date_purchased": datetime.strptime('2023-03-10', date_format),
+    "portfolio_id": PortfolioList[1]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "name": 'Litecoin',
+    "symbol": 'LTC',
+    "quantity": 200,
     "price": 150.0,
     "date_purchased": datetime.strptime('2023-03-10', date_format),
     "portfolio_id": PortfolioList[2]["id"]
@@ -327,6 +384,7 @@ for crypto in CryptoList:
     id=crypto["id"],
     name=crypto["name"],
     symbol=crypto["symbol"],
+    quantity=crypto["quantity"],
     price=crypto["price"],
     date_purchased=crypto["date_purchased"],
     portfolio_id=crypto["portfolio_id"]

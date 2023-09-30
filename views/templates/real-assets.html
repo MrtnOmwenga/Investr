@@ -77,10 +77,11 @@
       const table = document.querySelector(".assets table");
       const estatesData = [];
     
+      let serializedStock = {};
       // Iterate through the list of class objects and convert them to JSON serializable dictionaries
       '{% for estate in data["Real-Assets"]["real_estate"] %}'
           // Call the to_string() method to get a JSON serializable representation
-          const serializedStock = JSON.parse('{{ estate.to_dict() | tojson | safe }}');
+          serializedStock = JSON.parse('{{ estate.to_dict() | tojson | safe }}');
           
           // Add the serialized representation to the 'stocksData' array
           estatesData.push(serializedStock);
@@ -89,13 +90,32 @@
       const populateUl = () => {
         estatesData.forEach((estate) => {
           let tr = document.createElement("tr");
-          tr.innerHTML = `<td class='property_name'>${estate.property_name}</td> <td class='property_type'> ${estate.property_type}</td> <td class='location'> ${estate.location}</td> <td class='value'> ${estate.value}</td> <td> <button class="stock_btn"> DELETE </button> </td>`;
+          tr.innerHTML = `<td class='property_name'>${estate.property_name}</td>
+          <td class='property_type'> ${estate.property_type}</td>
+          <td class='location'> ${estate.location}</td>
+          <td class='value'> ${estate.value}</td>
+          <td>
+            <button class="stock_btn" data-id="${estate.id}" > DELETE </button>
+          </td>`;
           table.appendChild(tr);
         });
       };
 
-      console.log(estatesData);
       populateUl();
+
+      document.addEventListener('click', function(event) {
+          if (event.target && event.target.className === 'stock_btn') {
+              const id = event.target.dataset.id;
+              if (id) {
+                  // Create a form dynamically
+                  const form = document.createElement('form');
+                  form.method = 'POST';
+                  form.action = `forms/functions/delete-property/${id}`;
+                  document.body.appendChild(form);
+                  form.submit();
+              }
+          }
+      });
     </script>
   </body>
 </html>

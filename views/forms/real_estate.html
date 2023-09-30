@@ -53,7 +53,7 @@
       <!-- Main content -->
       <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
         <h1>REAL ESTATE</h1>
-        <form method="POST" action="/real_estate">
+        <form method="POST" action='{{ url_for("forms.real_estate")}}'>
           <!-- CSRF Token (if you're using Flask-WTF or a similar library for CSRF protection) -->
       
           <!-- Real Estate Information -->

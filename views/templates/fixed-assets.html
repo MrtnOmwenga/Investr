@@ -77,10 +77,11 @@
       const table = document.querySelector(".assets table");
       const bondsData = [];
     
+      let serializedStock = {}
       // Iterate through the list of class objects and convert them to JSON serializable dictionaries
       '{% for bond in data["Fixed-Income-Assets"]["bonds"] %}'
           // Call the to_string() method to get a JSON serializable representation
-          const serializedStock = JSON.parse('{{ bond.to_dict() | tojson | safe }}');
+          serializedStock = JSON.parse('{{ bond.to_dict() | tojson | safe }}');
           
           // Add the serialized representation to the 'stocksData' array
           bondsData.push(serializedStock);
@@ -89,13 +90,32 @@
       const populateUl = () => {
         bondsData.forEach((bond) => {
           let tr = document.createElement("tr");
-          tr.innerHTML = `<td class='issuer'>${bond.issuer}</td> <td class='face_value'> ${bond.face_value}</td> <td class='yield_rate'> ${bond.yield_rate}</td> <td class='maturity_date'> ${bond.maturity_date}</td> <td> <button class="stock_btn"> DELETE </button> </td>`;
+          tr.innerHTML = `<td class='issuer'>${bond.issuer}</td>
+          <td class='face_value'> ${bond.face_value}</td>
+          <td class='yield_rate'> ${bond.yield_rate}</td>
+          <td class='maturity_date'> ${bond.maturity_date}</td>
+          <td>
+            <button class="stock_btn" data-id="${bond.id}"> DELETE </button>
+          </td>`;
           table.appendChild(tr);
         });
       };
 
-      console.log(bondsData);
       populateUl();
+
+      document.addEventListener('click', function(event) {
+          if (event.target && event.target.className === 'stock_btn') {
+              const id = event.target.dataset.id;
+              if (id) {
+                  // Create a form dynamically
+                  const form = document.createElement('form');
+                  form.method = 'POST';
+                  form.action = `forms/functions/delete-bond/${id}`;
+                  document.body.appendChild(form);
+                  form.submit();
+              }
+          }
+      });
     </script>
   </body>
 </html>

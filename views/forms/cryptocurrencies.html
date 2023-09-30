@@ -53,7 +53,7 @@
       <!-- Main content -->
       <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
         <h1>CRYPTOCURRENCIES</h1>
-        <form method="POST" action="/cryptocurrencies">
+        <form method="POST" action='{{ url_for("forms.crypto")}}'>
           <!-- CSRF Token (if you're using Flask-WTF or a similar library for CSRF protection) -->
       
           <!-- Cryptocurrency Information -->

@@ -7,7 +7,8 @@ class Cryptocurrency(Base):
 
     id = Column(String, primary_key=True)
     name = Column(String(255), nullable=False)
-    symbol = Column(String(10), unique=True, nullable=False)
+    symbol = Column(String(10), nullable=False)
+    quantity = Column(Float)
     price = Column(Float)
     date_purchased = Column(Date)
 
@@ -15,16 +16,17 @@ class Cryptocurrency(Base):
     portfolio_id = Column(String, ForeignKey('portfolio.id'))
     portfolio = relationship("Portfolio", back_populates="cryptocurrencies")
 
-    def __init__(self, id, name, symbol, price, date_purchased, portfolio_id):
+    def __init__(self, id, name, symbol, price, date_purchased, portfolio_id, quantity):
         self.id = id
         self.name = name
         self.symbol = symbol
         self.price = price
         self.date_purchased = date_purchased
         self.portfolio_id = portfolio_id
+        self.quantity = quantity
 
     def __repr__(self):
-        return f"<{self.id}> {self.name}: {self.symbol}: {self.price}: {self.date_purchased}"
+        return f"<{self.id}> {self.name}: {self.symbol}: {self.price}: {self.quantity}: {self.date_purchased}"
     
     def to_dict(self):
         return {
@@ -32,5 +34,6 @@ class Cryptocurrency(Base):
         "name": self.name,
         "symbol": self.symbol,
         "price": self.price,
-        "date_purchased": self.date_purchased
+        "date_purchased": self.date_purchased,
+        "quantity": self.quantity
         }

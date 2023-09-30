@@ -77,10 +77,11 @@
       const table = document.querySelector(".assets table");
       const assetsData = [];
     
+      let serializedStock = {}
       // Iterate through the list of class objects and convert them to JSON serializable dictionaries
       '{% for asset in data["Alternative-Investments"]["private_equity"] %}'
           // Call the to_string() method to get a JSON serializable representation
-          const serializedStock = JSON.parse('{{ asset.to_dict() | tojson | safe }}');
+          serializedStock = JSON.parse('{{ asset.to_dict() | tojson | safe }}');
           
           // Add the serialized representation to the 'stocksData' array
           assetsData.push(serializedStock);
@@ -89,13 +90,32 @@
       const populateUl = () => {
         assetsData.forEach((asset) => {
           let tr = document.createElement("tr");
-          tr.innerHTML = `<td class='fund_name'>${asset.fund_name}</td> <td class='date_invested'> ${asset.date_invested}</td> <td class='commitment_amount'> ${asset.commitment_amount}</td> <td class='current_value'> ${asset.current_value}</td> <td> <button class="stock_btn"> DELETE </button> </td>`;
+          tr.innerHTML = `<td class='fund_name'>${asset.fund_name}</td>
+          <td class='date_invested'> ${asset.date_invested}</td>
+          <td class='commitment_amount'> ${asset.commitment_amount}</td>
+          <td class='current_value'> ${asset.current_value}</td>
+          <td>
+            <button class="stock_btn" data-id="${asset.id}"> DELETE </button>
+          </td>`;
           table.appendChild(tr);
         });
       };
 
-      console.log(assetsData);
       populateUl();
+
+      document.addEventListener('click', function(event) {
+          if (event.target && event.target.className === 'stock_btn') {
+              const id = event.target.dataset.id;
+              if (id) {
+                  // Create a form dynamically
+                  const form = document.createElement('form');
+                  form.method = 'POST';
+                  form.action = `forms/functions/delete-private-equity/${id}`;
+                  document.body.appendChild(form);
+                  form.submit();
+              }
+          }
+      });
     </script>
   </body>
 </html>

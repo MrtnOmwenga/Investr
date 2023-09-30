@@ -21,7 +21,7 @@
     <!---Stylesheet-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
-    <link rel="stylesheet" type= "text/css" href="{{ url_for('views.static', filename='digital-assets.css') }}" />
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('views.static', filename='base.css') }}" />
 
   </head>
   <body>
@@ -54,7 +54,7 @@
       <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
           <!-- Your main content goes here -->
           <h1 class="main-title">DIGITAL ASSETS</h1>
-          <a class="new-btn" href="/forms/crypto-forms">New</a>
+          <a class="new-btn extra" href="/forms/crypto-forms">New</a>
           <div class="total-value">
             <h3 class="title">TOTAL PORTFOLIO VALUE</h3>
             <h4 class="value">$ {{data['Digital-Assets']['total_value']}}</h4>
@@ -76,10 +76,11 @@
       const table = document.querySelector(".assets table");
       const assetsData = [];
     
+      let serializedStock = {}
       // Iterate through the list of class objects and convert them to JSON serializable dictionaries
       '{% for asset in data["Digital-Assets"]["cryptocurrencies"] %}'
           // Call the to_string() method to get a JSON serializable representation
-          const serializedStock = JSON.parse('{{ asset.to_dict() | tojson | safe }}');
+          serializedStock = JSON.parse('{{ asset.to_dict() | tojson | safe }}');
           
           // Add the serialized representation to the 'stocksData' array
           assetsData.push(serializedStock);
@@ -88,13 +89,31 @@
       const populateUl = () => {
         assetsData.forEach((asset) => {
           let tr = document.createElement("tr");
-          tr.innerHTML = `<td class='symbol'>${asset.symbol}</td> <td class='name'> ${asset.name}</td> <td class='price'> ${asset.price}</td> <td> <button class="stock_btn"> DELETE </button> </td>`;
+          tr.innerHTML = `<td class='symbol'>${asset.symbol}</td>
+          <td class='name'> ${asset.name}</td>
+          <td class='price'> ${asset.price}</td>
+          <td>
+            <button class="stock_btn" data-id="${asset.id}"> DELETE </button>
+          </td>`;
           table.appendChild(tr);
         });
       };
 
-      console.log(assetsData);
       populateUl();
+
+      document.addEventListener('click', function(event) {
+          if (event.target && event.target.className === 'stock_btn') {
+              const id = event.target.dataset.id;
+              if (id) {
+                  // Create a form dynamically
+                  const form = document.createElement('form');
+                  form.method = 'POST';
+                  form.action = `forms/functions/delete-crypto/${id}`;
+                  document.body.appendChild(form);
+                  form.submit();
+              }
+          }
+      });
     </script>
   </body>
 </html>
