@@ -62,14 +62,15 @@ def calculate_options_value(OptionsList):
   total_value = 0
 
   for option in OptionsList:
-    time_to_expiration = (date.today() - option.expiration_date).total_seconds()
-    time_to_expiration_years = time_to_expiration / (365.0 * 24 * 60 * 60)
-    print(f"TIME TO EXPIRATION: {time_to_expiration_years}")
-    if option.contract_type == 'Call':
+    if option.expiration_date > date.today():
+      time_to_expiration = (option.expiration_date - date.today()).total_seconds()
+      time_to_expiration_years = time_to_expiration / (365.0 * 24 * 60 * 60)
+      print(f"TIME TO EXPIRATION: {time_to_expiration_years}")
+      if option.contract_type == 'Call':
         total_value += black_scholes_call(option.price, 105, time_to_expiration_years, r, sigma)
-    elif option.contract_type == 'Put':
-      total_value += black_scholes_put(option.price, 105, time_to_expiration_years, r, sigma)
-    
+      elif option.contract_type == 'Put':
+        total_value += black_scholes_put(option.price, 105, time_to_expiration_years, r, sigma)
+      
   return round(total_value, 2)
 
 def calculate_crypto_value(CryptoList):

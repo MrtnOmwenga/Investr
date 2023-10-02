@@ -259,8 +259,35 @@ OptionsList = [
     "contract_name": 'Sample Option 1',
     "underlying_asset": 'AAPL',
     "contract_type": 'Call',
-    "expiration_date": datetime.strptime('2023-05-15', date_format),
+    "expiration_date": datetime.strptime('2027-05-15', date_format),
     "price": 10.0,
+    "portfolio_id": PortfolioList[0]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "contract_name": 'Sample Option 1',
+    "underlying_asset": 'AAPL',
+    "contract_type": 'Call',
+    "expiration_date": datetime.strptime('2027-05-15', date_format),
+    "price": 10.0,
+    "portfolio_id": PortfolioList[1]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "contract_name": 'Sample Option 1',
+    "underlying_asset": 'AAPL',
+    "contract_type": 'Call',
+    "expiration_date": datetime.strptime('2027-05-15', date_format),
+    "price": 10.0,
+    "portfolio_id": PortfolioList[2]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "contract_name": 'Sample Option 2',
+    "underlying_asset": 'GOOGL',
+    "contract_type": 'Put',
+    "expiration_date": datetime.strptime('2027-06-20', date_format),
+    "price": 12.0,
     "portfolio_id": PortfolioList[0]["id"]
   },
   {
@@ -268,8 +295,35 @@ OptionsList = [
     "contract_name": 'Sample Option 2',
     "underlying_asset": 'GOOGL',
     "contract_type": 'Put',
-    "expiration_date": datetime.strptime('2023-06-20', date_format),
+    "expiration_date": datetime.strptime('2027-06-20', date_format),
     "price": 12.0,
+    "portfolio_id": PortfolioList[1]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "contract_name": 'Sample Option 2',
+    "underlying_asset": 'GOOGL',
+    "contract_type": 'Put',
+    "expiration_date": datetime.strptime('2027-06-20', date_format),
+    "price": 12.0,
+    "portfolio_id": PortfolioList[2]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "contract_name": 'Sample Option 3',
+    "underlying_asset": 'MSFT',
+    "contract_type": 'Call',
+    "expiration_date": datetime.strptime('2027-07-10', date_format),
+    "price": 8.0,
+    "portfolio_id": PortfolioList[0]["id"]
+  },
+  {
+    "id": str(uuid.uuid4()),
+    "contract_name": 'Sample Option 3',
+    "underlying_asset": 'MSFT',
+    "contract_type": 'Call',
+    "expiration_date": datetime.strptime('2027-07-10', date_format),
+    "price": 8.0,
     "portfolio_id": PortfolioList[1]["id"]
   },
   {
@@ -277,7 +331,7 @@ OptionsList = [
     "contract_name": 'Sample Option 3',
     "underlying_asset": 'MSFT',
     "contract_type": 'Call',
-    "expiration_date": datetime.strptime('2023-07-10', date_format),
+    "expiration_date": datetime.strptime('2027-07-10', date_format),
     "price": 8.0,
     "portfolio_id": PortfolioList[2]["id"]
   }

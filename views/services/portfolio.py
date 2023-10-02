@@ -34,7 +34,7 @@ def portfolio(id):
       assets_owned += 1
 
   diversity_score = round((assets_owned / len(asset_value_list)) * 100, 2)
-  total_value = sum(asset_value_list)
+  total_value = round(sum(asset_value_list), 2)
 
   if result:
     return {

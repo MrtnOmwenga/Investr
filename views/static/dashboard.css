@@ -73,8 +73,7 @@ body {
 
 /* Styling for sticky behavior */
 .sticky {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 
@@ -126,6 +125,10 @@ body {
   padding: 1px 35px 1px 35px;
 }
 
+.total-value:hover {
+  transform: scale(1.075);
+}
+
 .total-value .title {
   font-weight: 700;
   font-size: medium;
@@ -152,7 +155,7 @@ body {
 }
 
 .asset-allocation .column_b {
-  margin-top: 100px;
+  margin-top: 170px;
   margin-left: 100px;
   text-align: left;
 }

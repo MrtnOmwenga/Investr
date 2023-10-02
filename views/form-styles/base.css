@@ -73,8 +73,7 @@ body {
 
 /* Styling for sticky behavior */
 .sticky {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 
