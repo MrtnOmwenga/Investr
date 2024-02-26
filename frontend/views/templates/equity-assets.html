@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+  {% block content %}
+    <!-- Main content -->
+    <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
+        <!-- Your main content goes here -->
+        <p class="disclaimer"> <span> Hi. </span> You many need to update some data manually. See user manual. </p>
+        <h2 class="main-title">Equity Based Assets</h2>
+        <a type="button" class="new-btn extra" href="/forms/stock-forms">New</a>
+        <div class="total-value">
+          <h3 class="title">TOTAL PORTFOLIO VALUE</h3>
+          <h4 class="value">$ {{data['Equity-Based-Assets']['total_value']}}</h4>
+        </div>
+        <div class="assets">
+          <table>
+            <tr>
+              <th style="width: 250px;">SYMBOL</th>
+              <th style="width: 250px;">COMPANY NAME</th>
+              <th style="width: 250px;">QUANTITY</th>
+              <th style="width: 250px;">PRICE</th>
+              <th></th>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+    <script>
+      const table = document.querySelector(".assets table");
+      const stocksData = [];
+    
+      let serializedStock = {};
+      // Iterate through the list of class objects and convert them to JSON serializable dictionaries
+      '{% for stock in data["Equity-Based-Assets"]["stocks"] %}'
+          // Call the to_string() method to get a JSON serializable representation
+          serializedStock = JSON.parse('{{ stock.to_dict() | tojson | safe }}');
+          
+          // Add the serialized representation to the 'stocksData' array
+          stocksData.push(serializedStock);
+      '{% endfor %}'
+
+      const populateUl = () => {
+        stocksData.forEach((stock) => {
+          let tr = document.createElement("tr");
+          tr.innerHTML = `<td class='symbol'>${stock.symbol}</td>
+          <td class='company_name'> ${stock.company_name}</td>
+          <td class='quantity'> ${stock.quantity}</td>
+          <td class='price'> ${stock.price}</td>
+          <td>
+            <button class="stock_btn" data-id="${stock.id}"> DELETE </button>
+          </td>`;
+          table.appendChild(tr);
+        });
+      };
+
+      populateUl();
+
+      document.addEventListener('click', function(event) {
+          if (event.target && event.target.className === 'stock_btn') {
+              const id = event.target.dataset.id;
+              if (id) {
+                  // Create a form dynamically
+                  const form = document.createElement('form');
+                  form.method = 'POST';
+                  form.action = `forms/functions/delete-stock/${id}`;
+                  document.body.appendChild(form);
+                  form.submit();
+              }
+          }
+      });
+    </script>
+  {% endblock %}

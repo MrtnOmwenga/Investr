@@ -1,0 +1,38 @@
+{% extends "forms_base.html" %}
+  {% block content %}
+  <!-- Main content -->
+  <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
+    <h1>REITs</h1>
+    <form method="POST" action="/reits">
+      <!-- CSRF Token (if you're using Flask-WTF or a similar library for CSRF protection) -->
+  
+      <!-- REIT Information -->
+      <div class="form-group">
+          <label for="name">REIT Name:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="REIT Name" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="symbol">REIT Symbol:</label>
+          <input type="text" class="form-control" id="symbol" name="symbol" placeholder="REIT Symbol" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="current_price">Current Price (USD):</label>
+          <input type="number" step="0.01" class="form-control" id="current_price" name="current_price" placeholder="Current Price" required>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="button-group">
+        <a type="button" class="btn btn-close" href="/equity-assets">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  
+  </div>
+  {% endblock %}

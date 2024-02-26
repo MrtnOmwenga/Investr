@@ -1,0 +1,152 @@
+body {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  overflow-x: hidden;
+
+}
+
+.main {
+  background-color: #121212;
+}
+
+.Title {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.05em;
+  line-height: 1.2em;
+  color: #EFEFD0;
+  padding-left: 35px;
+  text-decoration: none;
+  position: absolute;
+  top: 1.5em;
+}
+
+.sidebar {
+  top: 0;
+  left: 0;
+  height: 97vh;
+  width: 250px; /* Adjust the width as needed */
+  background-color: #121212;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  padding-top: 90px;
+}
+
+/* Style for sidebar buttons */
+.sidebar-button {
+  display: block;
+  padding: 10px 30px;
+  color: #EFEFD0;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  text-wrap: break-word;
+}
+
+/* Hover effect for sidebar buttons */
+.sidebar-button:hover {
+  color: #FF6B35;
+}
+
+/* Styling for sticky behavior */
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.active {
+  color:#FF6B35;
+}
+
+/* Style for dashboard and account settings buttons */
+.dashboard-button, .account-settings-button {
+  padding: 10px 30px;
+  font-family: 'DM Sans';
+  text-decoration: none;
+  display: block;
+}
+
+.dashboard-button {
+  margin-top: 40px;
+}
+
+.account-settings-button {
+  margin-top: 20px;
+  color: #EFEFD0;
+}
+
+.main-container {
+  position: absolute;
+  top: 0.5em;
+  border-style: solid;
+  border-radius: 20px;
+  height: calc(100vh - 50px);
+  width: calc(100vw - 50px);
+  margin-left: 250px;
+  padding: 30px 20px 0px 20px;
+  flex: 1;
+  background-color: #EFEFD0;
+
+}
+
+.main-container h1 {
+  font-family: 'DM Sans', sans-serif;
+  margin-left: 30px;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  color: #004E89;
+}
+
+form {
+  margin-left: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  font-family: 'DM Sans',sans-serif;
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.form-group input {
+  height: 40px;
+  width: 500px;
+  padding-left: 20px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.button-group {
+  display: flex;
+  gap: 30px;
+  margin-left: 20px;
+}
+
+.btn {
+  width: 120px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-primary {
+  height: 35px;
+  background-color: #004E89;
+  color: #EFEFD0;
+  border: none;
+}
+
+.btn-close {
+  background-color: #FF6B35;
+  color: #EFEFD0;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 7px;
+  height: 28px;
+}

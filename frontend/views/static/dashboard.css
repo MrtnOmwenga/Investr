@@ -1,0 +1,193 @@
+body {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  overflow-x: hidden;
+
+}
+
+.main {
+  background-color: #121212;
+}
+
+.Title {
+  font-family: 'League Gothic', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.05em;
+  line-height: 1.2em;
+  color: #EFEFD0;
+  padding-left: 35px;
+  text-decoration: none;
+  position: absolute;
+  top: 1.5em;
+}
+
+.sidebar {
+  top: 0;
+  left: 0;
+  height: 97vh;
+  width: 250px; /* Adjust the width as needed */
+  background-color: #121212;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  padding-top: 90px;
+}
+
+/* Style for sidebar buttons */
+.sidebar-button {
+  display: block;
+  padding: 10px 30px;
+  color: #EFEFD0;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  text-wrap: break-word;
+}
+
+/* Hover effect for sidebar buttons */
+.sidebar-button:hover {
+  color: #FF6B35;
+}
+
+/* Styling for sticky behavior */
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.active {
+  color:#FF6B35;
+}
+
+/* Style for dashboard and account settings buttons */
+.dashboard-button, .account-settings-button {
+  padding: 10px 30px;
+  font-family: 'DM Sans';
+  text-decoration: none;
+  display: block;
+}
+
+.dashboard-button {
+  margin-top: 40px;
+}
+
+.account-settings-button {
+  position: absolute;
+  bottom: 95px;
+  margin-left: 5px;
+  color: #EFEFD0;
+}
+
+.main-container {
+  position: absolute;
+  top: 0.5em;
+  margin-left: 250px;
+  padding-top: 10px;
+  flex: 1;
+  background-color: #EFEFD0;
+  border-style: solid;
+  border-radius: 20px;
+  height: calc(100vh - 30px);
+  width: calc(100vw - 260px);
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.disclaimer {
+  padding-left: 50px;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.disclaimer span {
+  font-weight: bolder;
+}
+
+.main-container::-webkit-scrollbar {
+  display: none;
+}
+.main-title {
+  font-family: 'DM Sans', sans-serif;
+  padding-left: 50px;
+  margin-top: 50px;
+  color: #004E89;
+}
+
+.total-value {
+  width: 200px;
+  margin-left: 45px;
+  margin-top: 10px;
+  background-color: #121212;
+  border-radius: 25px;
+  border: none;
+  font-family: 'DM Sans';
+  text-align: right;
+  padding: 1px 35px 1px 35px;
+}
+
+.total-value .title {
+  font-weight: 700;
+  font-size: medium;
+  color: #004E89;
+}
+
+.total-value .value {
+  font-weight: 700;
+  color: #FF6B35;
+}
+
+
+.asset-allocation {
+  display: flex;
+  color: #121212;
+}
+
+.asset-allocation .column_a{
+  width: 325px;
+  margin-left: 50px;
+  margin-top: 100px;
+  font-family: 'DM Sans', sans-serif;
+  text-align: center;
+  font-weight: 600;
+  font-size: large;
+}
+
+.asset-allocation .column_b {
+  margin-top: 170px;
+  margin-left: 75px;
+  text-align: left;
+}
+
+.new-btn {
+  position: absolute;
+  width: 75px;
+  height: 30px;
+  right: 40px;
+  margin-top: 100px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.asset-allocation .column_b table {
+  width: 500px;
+  list-style: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.legend {
+  width: 70%;
+}
+
+.legend-value {
+  position: relative;
+  text-align: right;
+  right: 0;
+  font-weight: 600;
+}

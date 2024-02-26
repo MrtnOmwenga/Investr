@@ -1,0 +1,39 @@
+{% extends "forms_base.html" %}
+  {% block content %}
+
+  <!-- Main content -->
+  <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
+    <h1>ETFs</h1>
+    <form method="POST" action="/etfs">
+      <!-- CSRF Token (if you're using Flask-WTF or a similar library for CSRF protection) -->
+  
+      <!-- ETF Information -->
+      <div class="form-group">
+          <label for="symbol">ETF Symbol:</label>
+          <input type="text" class="form-control" id="symbol" name="symbol" placeholder="ETF Symbol" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="name">ETF Name:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="ETF Name" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="current_price">Current Price (USD):</label>
+          <input type="number" step="0.01" class="form-control" id="current_price" name="current_price" placeholder="Current Price" required>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="button-group">
+        <a type="button" class="btn btn-close" href="/equity-assets">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  
+  </div>
+  {% endblock %}

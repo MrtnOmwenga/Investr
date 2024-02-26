@@ -1,0 +1,40 @@
+{% extends "forms_base.html" %}
+  {% block content %}
+
+  <!-- Main content -->
+  <div class="main-container"> <!-- Adjust margin-left to match sidebar width -->
+    <h1>PRIVATE EQUITY</h1>
+    <form method="POST" action='{{ url_for("forms.private_equity")}}'>
+      <!-- CSRF Token (if you're using Flask-WTF or a similar library for CSRF protection) -->
+  
+      <!-- Private Equity Information -->
+  
+      <div class="form-group">
+          <label for="fund_name">Fund Name:</label>
+          <input type="text" class="form-control" id="fund_name" name="fund_name" placeholder="Fund Name" required>
+      </div>
+  
+      <div class="form-group">
+          <label for="investment_date">Investment Date:</label>
+          <input type="date" class="form-control" id="investment_date" name="investment_date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Commitment Amount (USD):</label>
+        <input type="number" step="0.01" class="form-control" id="commitment_amount" name="commitment_amount" placeholder="Commitment Amount" required>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Current Value (USD):</label>
+        <input type="number" step="0.01" class="form-control" id="current_value" name="current_value" placeholder="Current Value" required>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="button-group">
+        <a type="button" class="btn btn-close" href="/alternative-investments">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  
+  </div>
+    {% endblock %}

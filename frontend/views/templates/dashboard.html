@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+  {% block content %}
+    <!-- Main content -->
+    <div class="main-container">
+      <!-- Your main content goes here -->
+      <p class="disclaimer"> <span> Hi. </span> You many need to update some data manually. See user manual. </p>
+      <h2 class="main-title"> {{user.name}}'s Dashboard</h2>
+      <div class="total-value">
+        <h3 class="title">TOTAL PORTFOLIO VALUE</h3>
+        <h4 class="value">$ {{data['total_value']}}</h4>
+      </div>
+
+    </div>
+
+    <div class="asset-break-down">
+      
+    </div>
+  {% endblock %}
+  

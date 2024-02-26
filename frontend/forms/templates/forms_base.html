@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- End of headStart -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="Framer f415c5a">
+    <title>Investr</title>
+    <meta name="description" content="Made with Framer">
+    <meta name="framer-search-index" content="https://framerusercontent.com/sites/6EWInh3ueBwu3esBDUNkkQ/searchIndex-DYb8VcQf1vxr.json">
+    <link rel="icon" href="https://framerusercontent.com/sites/icons/default-favicon.v3.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Manage Your Investments">
+    <meta property="og:description" content="Made with Framer">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manage Your Investments">
+    <meta name="twitter:description" content="Made with Framer">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
+    <!---Stylesheet-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('forms.static', filename='base.css') }}" />
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="sidebar sticky">
+        <!--Title-->
+        <a href="#" class="Title" >Investr</a>
+        
+        <!-- Dashboard button -->
+        <a href="/dashboard" class="dashboard-button active">Dashboard</a>
+
+        <!-- Category buttons -->
+        <a href="/equity-assets" class="sidebar-button">Equity-Based Assets</a>
+        <a href="/fixed-assets" class="sidebar-button">Fixed-Income Assets</a>
+        <a href="/real-assets" class="sidebar-button">Real Assets</a>
+        <a href="/derivative-investments" class="sidebar-button">Derivative investments</a>
+        <a href="/alternative-investments" class="sidebar-button">Alternative Investments</a>
+        <a href="/digital-assets" class="sidebar-button">Digital Assets</a>
+        <a href="/liquid-assets" class="sidebar-button">Liquid Assets</a>
+        
+        <!-- Add more category buttons as needed -->
+
+        <!-- Account settings button -->
+        <a href="#" class="account-settings-button">Account Settings</a>
+      </div>
+
+      {% block content %} 
+      {% endblock %} 
+
+    </div>
+  </body>
+</html>
